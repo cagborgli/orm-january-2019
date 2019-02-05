@@ -18,11 +18,11 @@ namespace orm_january_2019
                 var students = context.Students;
 
                 var orderedStudents = 
-                    from s in students
+                    from s in students.Include(s => s.Major)
                     orderby s.Major.MajorText, s.Gpa descending 
                     select s;
 
-                Console.WriteLine(orderedStudents.First().Major.MajorText);
+                Console.WriteLine(orderedStudents.First().ToString());
                 
             }
         }
